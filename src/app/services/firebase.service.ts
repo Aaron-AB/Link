@@ -18,7 +18,7 @@ export class FirebaseService {
     private firestore: AngularFirestore
   ) { }
 
-  create_record(record,collectionName) {
+  create_record(record, collectionName) {
     this.collectionName = collectionName;
     return this.firestore.collection<any>(collectionName).add(record);
   }

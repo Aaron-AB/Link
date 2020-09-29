@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private fire: FirebaseService) {}
+
+  createRec() {
+    this.fire.create_record({'guy': 'kershawn'}, 'Test')
+  }
+
+
 
 }
