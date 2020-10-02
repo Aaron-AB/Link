@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-//import { AuthenticationServiceService } from "../services/authentication-service.service";
 import * as firebase from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
+import { FirebaseService } from 'src/app/services/firebase.service'
 
 
 @Component({
@@ -22,11 +22,12 @@ export class LoginPage implements OnInit {
   constructor(
     //public authService: AuthenticationServiceService,
     public router: Router,
-    public af: AngularFireAuth
+    public af: AngularFireAuth,
+    public fireServ: FirebaseService
   ) { }
 
   ngOnInit() {
-    firebase.initializeApp(environment.firebase);
+    //firebase.initializeApp(environment.firebase);
     this.recaptchaVerifier = new firebase.auth.
       RecaptchaVerifier('recaptcha-container', { 'size': 'invisible'});
   }
@@ -37,16 +38,7 @@ export class LoginPage implements OnInit {
     pNumber = areaCode + pNumber;
     console.log(pNumber);
     this.pNumber = pNumber;
-    /*
-    this.af.currentUser.then(u => u.linkWithPhoneNumber(this.pNumber, this.recaptchaVerifier)).then((result) => {
-      this.otpSent = true;
-      this.phoneNumber = pNumber;
-      this.confirmationResult = result;
-      alert("OTP Sent!");
-    }).catch(err => {
-      alert(err);
-    })
-    */
+
     this.af.signInWithPhoneNumber(this.pNumber, this.recaptchaVerifier).then((result) => {
     this.otpSent = true;
     this.phoneNumber = pNumber;
@@ -61,12 +53,16 @@ export class LoginPage implements OnInit {
   verifyOTP() {
     var otp = (<HTMLInputElement>document.getElementById("otp")).value;
     document.title = "Verify your number";
-    this.confirmationResult.confirm(otp).then(() => {
-      console.log(this.af.currentUser);
+    this.confirmationResult.confirm(otp).then((result) => {
+      //console.log(this.af.currentUser);
+      let user = result.user;
+      let userObj = {userid: user.uid}
+      this.fireServ.create_record(userObj, 'Users');
       alert("OTP Verified!");
     }).catch(err => {
       alert(err);
     })
   }
+
 
 }
