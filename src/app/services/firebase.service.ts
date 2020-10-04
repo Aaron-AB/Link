@@ -23,8 +23,8 @@ export class FirebaseService {
     return this.firestore.collection<any>(collectionName).add(record);
   }
 
-  read_record() {
-    return this.firestore.collection<any>(this.collectionName).snapshotChanges();
+  read_record(collectionName) {
+    return this.firestore.collection<any>(collectionName).snapshotChanges();
   }
 
   update_record(recordID, record) {
