@@ -11,7 +11,7 @@ export class HomePage {
   constructor(private fire: FirebaseService) {}
 
   createRec() {
-    this.fire.create_record({'guy': 'kershawn'}, 'Test')
+    this.fire.create_record({'guy': 'Keronn', 'age': '20'}, 'Test')
   }
 
 
