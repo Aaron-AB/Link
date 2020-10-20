@@ -1,0 +1,8 @@
+{
+  "name": "Link",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
