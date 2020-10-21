@@ -1,11 +1,16 @@
-<p>
-  <ion-item>
-    <ion-label>Select: Alert Interface</ion-label>
-    <ion-select class="custom-options">
-      <ion-select-option value="brown">Brown</ion-select-option>
-      <ion-select-option value="blonde">Blonde</ion-select-option>
-      <ion-select-option value="black">Black</ion-select-option>
-      <ion-select-option value="red">Red</ion-select-option>
-    </ion-select>
-  </ion-item>
-</p>
+<style> 
+
+    h4,h3 { 
+      text-align: center;
+    }
+</style> 
+
+<app-interest > 
+  <ion-card-content>
+    <img [src]="getimagetest">
+  </ion-card-content>
+  
+
+  <h4>{{name}}</h4> 
+  <h4>{{email}}</h4>
+</app-interest>

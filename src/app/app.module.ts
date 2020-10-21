@@ -14,12 +14,14 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { Camera } from '@ionic-native/Camera/ngx';
-import { File } from '@ionic-native/file/ngx'; 
+import { File } from '@ionic-native/file/ngx';  
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,CommonModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule ],
+  imports: [BrowserModule,CommonModule, IonicModule.forRoot(), FormsModule, AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule ],
   providers: [
     StatusBar,
     SplashScreen,

@@ -13,8 +13,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 //import { getMaxListeners } from 'cluster'; 
 import {ɵunwrapSafeValue as unwrapSafeValue} from "@angular/core";
-import { map } from 'rxjs/operators';
-const { Camera } = Plugins; 
+import { map } from 'rxjs/operators'; 
+import {NgForm} from '@angular/forms'; 
+import { FormsModule } from '@angular/forms'; 
+
+import { ActionSheetController } from '@ionic/angular';
+
+const { Camera } = Plugins;  
 
 @Component({
   selector: 'app-adduser',
@@ -27,38 +32,20 @@ export class AdduserComponent implements OnInit {
   photo: SafeResourceUrl;
   isDesktop: boolean;    
   getimagetest;
-  email = ""; 
-  name = "";
+  email: string; 
+  name: string;
   constructor( 
     private platform: Platform,
     private sanitizer: DomSanitizer, 
-    private fireService : FirebaseService,
+    private fireService : FirebaseService, 
+    public actionSheetController: ActionSheetController, 
+    public router: Router,
+
     
 
     ) {}
 
-  getUser(){ 
-    var user = firebase.auth().currentUser.uid; 
-    console.log(this.photo);   
-    
-    this.fireService.create_record({uid: user,name: "John", email: "johndoe@gmail.com", profilePicture: unwrapSafeValue(this.photo) },"Users");  
-
-
-
-    console.log(this.fireService.read_record().subscribe(testUsers => {
-      console.log('Observable:',testUsers);  
-      this.getimagetest = testUsers[0].profilePicture; 
-      console.log(this.getimagetest); 
-      this.initPP.nativeElement.style.image = " {{getimagetest}}";
-
-      //var testUsers = testUsers;  
-      //console.log(testUsers.values()); 
-    }
-      ) );  
-
-  } 
-
-    //return user;
+  
 
   ngOnInit() {    
     if ((this.platform.is('mobile') && this.platform.is('hybrid')) || this.platform.is('desktop')) {
@@ -67,7 +54,29 @@ export class AdduserComponent implements OnInit {
     this.getUser();
   } 
 
-  async getPicture(type: string) {
+  getUser(){  
+    var user = firebase.auth().currentUser.uid; 
+    console.log(this.photo,this.name,this.email);   
+    
+    this.fireService.create_record({uid: user,name: this.name, email: this.email, profilePicture: unwrapSafeValue(this.photo) },"Users");  
+
+
+
+    /*console.log(this.fireService.read_record().subscribe(testUsers => {
+      console.log('Observable:',testUsers);  
+      this.getimagetest = testUsers[0].profilePicture; 
+      console.log(this.getimagetest); 
+      this.initPP.nativeElement.style.image = " {{getimagetest}}";
+
+      //var testUsers = testUsers;  
+      //console.log(testUsers.values()); 
+    }
+      ) );  */
+      this.router.navigate(["login/interests"]);
+  }//getUser()
+
+  async getPicture(type: string) { 
+    
     if (!Capacitor.isPluginAvailable('Camera') || (this.isDesktop && type === 'gallery')) {
       this.filePickerRef.nativeElement.click();
       return;
@@ -101,6 +110,30 @@ export class AdduserComponent implements OnInit {
 
     this.initPP.nativeElement.style.image = " {{photo}}";
 
-    }//end onFileChoose
+    }//end onFileChoose  
+
+    async selectImage() {
+      const actionSheet = await this.actionSheetController.create({
+        header: "Select Image source",
+        buttons: [{
+          text: 'Load from Library',
+          handler: () => {
+            this.getPicture("Gallery");
+          }
+        },
+        {
+          text: 'Use Camera',
+          handler: () => {
+            this.getPicture("Camera");
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+        ]
+      });
+      await actionSheet.present();
+    }
 
 }

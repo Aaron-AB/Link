@@ -6,7 +6,7 @@
 <app-adduser > 
 
  
-  <ion-button id = "upbtn" (click) = "getPicture('Gallery')" color="light">Upload Photo</ion-button> 
+  <ion-button id = "upbtn" (click) = "selectImage()" color="light">Upload Photo</ion-button> 
   <input type="file" *ngIf="isDesktop" #filePicker (change)="onFileChoose($event)"/>
   
  
@@ -17,21 +17,17 @@
 
   <ion-item>
     <ion-label position="floating"> Enter Name </ion-label>  
-    <ion-input [(ngModel)]="name" title="name"></ion-input>
+    <ion-input  [value]="name" id="name" title="name" (keyup.enter)="name=$event.target.value"></ion-input>
   </ion-item>  
 
   
   <ion-item>
     <ion-label position="floating"> Enter Email Address </ion-label>  
-    <ion-input [(ngModel)]="email" title="email"></ion-input>
+    <ion-input [value]="email" (keyup.enter)="email=$event.target.value" title="email"></ion-input>
   </ion-item> 
 
 
 
   <ion-button expand="block" (click)="getUser()">Continue</ion-button>   
-
-  <ion-card-content>
-    <img [src]="getimagetest">
-  </ion-card-content>
 
 </app-adduser>
