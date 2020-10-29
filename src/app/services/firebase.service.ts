@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-
+import { map } from 'rxjs/operators';
 //import { CropData } from '../services/cart.service';
 
 @Injectable({
@@ -38,4 +38,18 @@ export class FirebaseService {
   get_recent() {
     return this.firestore.collection<any>(this.collectionName, ref => ref.orderBy('Date', 'desc')).snapshotChanges();
   }
+
+get_where(collectionName,key,value){
+  return this.firestore.collection<any>(collectionName, ref => ref.where(key ,'==' , value)).snapshotChanges().pipe(
+    map(actions => {
+      return actions.map(a => {
+        return {
+          id: a.payload.doc.id,
+          data: a.payload.doc.data()
+        }
+      })
+    })
+  );
+
+}
 }
