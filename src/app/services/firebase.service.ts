@@ -31,6 +31,10 @@ export class FirebaseService {
     this.firestore.doc(this.collectionName + '/' + recordID).update(record);
   }
 
+  update_collection(collectionName,recordID, record) {
+    this.firestore.doc(collectionName + '/' + recordID).update(record);
+  }
+
   delete_record(record_id) {
     this.firestore.doc(this.collectionName + '/' + record_id).delete();
   }
