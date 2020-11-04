@@ -20,15 +20,16 @@ export class FriendsPage implements OnInit {
    }
 
  ngOnInit() {
-  //this.af.authState.subscribe( user => {
-  //  if (user) { this.userId = user.uid }
- // });
- // console.log(this.userId);
- // this.start();
- console.log(this.fhelper.getid());
+  
+  //this.start();
+// console.log(this.fhelper.getid());
 
   }
-async start(btn){
+async start(){
+ // this.af.authState.subscribe( user => {
+   // if (user) { this.userId = user.uid }
+ // });
+ console.log(this.userId);
  //var friendnames = []
  if(!this.clicked){
   let user = await this.af.currentUser
@@ -82,6 +83,10 @@ alert("friend added");
     friendemail.value="";
 }
   }
+
+
+  /*
+  //testing functions
   async tester(){
   let user = await this.af.currentUser
   var obj = {
@@ -115,5 +120,5 @@ get_recordID(uid){
     var Arr = res;
     return Arr[0].id
   })
-}
+}*/
 }
