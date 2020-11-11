@@ -23,3 +23,5 @@ Error:app.auth is not a function angular/angularfire
 Solution:
 > npm uninstall firebase @angular/fire --save <br>
 > npm install firebase @angular/fire --save
+
+Test
