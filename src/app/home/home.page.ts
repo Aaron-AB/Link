@@ -9,11 +9,4 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class HomePage {
 
   constructor(private fire: FirebaseService) {}
-
-  createRec() {
-    this.fire.create_record({'guy': 'Keronn', 'age': '20'}, 'Test')
-  }
-
-
-
 }
