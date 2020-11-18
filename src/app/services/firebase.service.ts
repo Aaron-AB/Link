@@ -23,6 +23,10 @@ export class FirebaseService {
     return this.firestore.collection<any>(collectionName).add(record);
   }
 
+  create_record_id(record, collectionName, userID) { 
+    return this.firestore.doc(collectionName + '/' + userID).set(record);
+  }
+
   read_record(collectionName) {
     return this.firestore.collection<any>(collectionName).snapshotChanges();
   }
@@ -43,17 +47,17 @@ export class FirebaseService {
     return this.firestore.collection<any>(this.collectionName, ref => ref.orderBy('Date', 'desc')).snapshotChanges();
   }
 
-get_where(collectionName,key,value){
-  return this.firestore.collection<any>(collectionName, ref => ref.where(key ,'==' , value)).snapshotChanges().pipe(
-    map(actions => {
-      return actions.map(a => {
-        return {
-          id: a.payload.doc.id,
-          data: a.payload.doc.data()
-        }
+  get_where(collectionName,key,value){
+    return this.firestore.collection<any>(collectionName, ref => ref.where(key ,'==' , value)).snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          return {
+            //id: a.payload.doc.data().id,
+            data: a.payload.doc.data()
+          }
+        })
       })
-    })
-  );
+    );
 
-}
+  }
 }
