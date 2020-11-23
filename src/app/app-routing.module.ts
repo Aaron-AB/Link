@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'friends',
     loadChildren: () => import('./friends/friends.module').then( m => m.FriendsPageModule)
   },
+  {
+    path: 'firechat',
+    loadChildren: () => import('./firechat/firechat.module').then( m => m.FirechatPageModule)
+  },
 
 ];
 
