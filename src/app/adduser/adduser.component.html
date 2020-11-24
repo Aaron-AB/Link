@@ -1,0 +1,33 @@
+<style>  
+  #upbtn{ 
+    padding-left: 25%
+    }
+</style>
+<app-adduser > 
+
+ 
+  <ion-button id = "upbtn" (click) = "selectImage()" color="light">Upload Photo</ion-button> 
+  <input type="file" *ngIf="isDesktop" #filePicker (change)="onFileChoose($event)"/>
+  
+ 
+  <ion-card-content>
+    <img [src]="photo">
+  </ion-card-content>
+
+
+  <ion-item>
+    <ion-label position="floating"> Enter Name </ion-label>  
+    <ion-input  [value]="name" id="name" title="name" (keyup.enter)="name=$event.target.value"></ion-input>
+  </ion-item>  
+
+  
+  <ion-item>
+    <ion-label position="floating"> Enter Email Address </ion-label>  
+    <ion-input [value]="email" (keyup.enter)="email=$event.target.value" title="email"></ion-input>
+  </ion-item> 
+
+
+
+  <ion-button expand="block" (click)="getUser()">Continue</ion-button>   
+
+</app-adduser>
