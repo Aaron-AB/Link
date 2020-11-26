@@ -32,7 +32,7 @@ export class FirebaseService {
   }
 
   update_record(recordID, record) {
-    this.firestore.doc(this.collectionName + '/' + recordID).update(record);
+    this.firestore.doc(this.collectionName + '/' + recordID).update(record)
   }
 
   update_collection(collectionName,recordID, record) {
@@ -60,4 +60,5 @@ export class FirebaseService {
     );
 
   }
+
 }
