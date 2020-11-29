@@ -54,8 +54,9 @@ export class LoginPage implements OnInit {
     var otp = (<HTMLInputElement>document.getElementById("otp")).value;
     document.title = "Verify your number";
     this.confirmationResult.confirm(otp).then((result) => {
-      //console.log(this.af.currentUser);
-      let user = result.user;
+      console.log(this.af.currentUser);
+      let user = result.user; 
+      console.log(user);
       let userObj = {userid: user.uid}
       //is.fireServ.create_record_id(userObj, 'users', user.uid); //Changed to users from Users
       this.fireServ.create_record_id(userObj, 'Users', user.uid); 
