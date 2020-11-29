@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>swiper-gesture</ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,14 +11,14 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="12">
-        <ion-card *ngFor="let p of people">
-          <img [src]="p.img" />
+        <ion-card *ngFor="let p of posts">
+          <img [src]="p.ProfilePicture" />
           <ion-card-header>
             <ion-title>
-              {{p.name}}
+              {{p.Name}}
             </ion-title>
             <ion-card-subtitle>
-              {{p.power}}
+              {{p.Email}}
             </ion-card-subtitle>
           </ion-card-header>
         </ion-card>
