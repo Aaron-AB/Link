@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { FirebaseService } from "../services/firebase.service";
 import { Toast } from '@capacitor/core';
-import { FirebaseService } from '../services/firebase.service';
 import { FriendService } from '../services/Friend.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { firestore } from 'firebase/app';
