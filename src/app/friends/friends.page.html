@@ -5,9 +5,15 @@
 </ion-header>
 
 <ion-content>
-
+  
+<div *ngFor="let friend of friendnames">
   <ion-list>
+     <ion-item>
+      <ion-label>{{friend}}</ion-label>
+    </ion-item>
   </ion-list>
-  <ion-input id="myfriend" placeholder="Friend's username"></ion-input>
-  <ion-button (click)="addfriend()" color="primary" expand ="full">Add Friend</ion-button>
+  </div>
+  <ion-input  id="myfriend" placeholder="Friend's id" #friendemail></ion-input>
+  <ion-button (click)="addfriend(friendemail)" color="primary" expand ="full">Add Friend</ion-button>
+  <ion-button (click)="start()"#show>show your friends</ion-button>
 </ion-content>

@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "jsx": "preserve",
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
