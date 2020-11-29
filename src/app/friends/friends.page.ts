@@ -36,7 +36,6 @@ export class FriendsPage implements OnInit {
     //console.log("Chat Id: ", chatId);
     if (chatId) {
       localStorage.setItem("link-chat-id", chatId);
-      localStorage.setItem("link-chat-id", "messages");
       this.router.navigate(['firechat']);
     }
   }
