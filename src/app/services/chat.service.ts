@@ -28,7 +28,7 @@ export interface Message {
 })
 export class ChatService{
 
-  commonId = "1234";
+  commonId = "messages";
   currentUser: User = null;
 
   users = [];
@@ -51,8 +51,13 @@ export class ChatService{
     return this.afs.collection('users').valueChanges({idField: 'uid'}) as Observable<User[]>;
   }
 
+  setChatId(chatId) {
+    this.commonId = chatId;
+   console.log("chat id: ", this.commonId);
+  }
+
   addChatMessage(msg) {
-    return this.afs.collection('messages').add({ //replace "messages" with whatever chatid there is
+    return this.afs.collection(this.commonId).add({ //replace "messages" with whatever chatid there is
       msg: msg,
       from: this.currentUser.uid,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -73,7 +78,7 @@ export class ChatService{
     return this.getUsers().pipe(
       switchMap((res: any) => {
         users = res;
-        return this.afs.collection('messages', ref => ref.orderBy('createdAt')).valueChanges() as Observable<Message[]>;
+        return this.afs.collection(this.commonId, ref => ref.orderBy('createdAt')).valueChanges() as Observable<Message[]>;
       }),
       map((messages: any) => {
         // Get the real name for each user

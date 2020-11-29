@@ -9,7 +9,8 @@
 <div *ngFor="let friend of friendnames">
   <ion-list>
      <ion-item>
-      <ion-label>{{friend}}</ion-label>
+      <ion-label>{{friend.name}}</ion-label>
+      <ion-button (click)="chatWith($event, friend.chat)" color="primary">Chat</ion-button>
     </ion-item>
   </ion-list>
   </div>

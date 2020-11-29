@@ -16,11 +16,12 @@ export class FirechatPage implements OnInit {
   messages: Observable<any[]>;
   newMsg = '';
 
-  constructor(private firebaseService: FirebaseService, private chatService: ChatService) { }
+  constructor(private firebaseService: FirebaseService, private chatService: ChatService) {}
 
   commonid = "1234"; 
 
   ngOnInit() {
+    this.chatService.setChatId(localStorage.getItem("link-chat-id"));
    this.messages = this.chatService.getChatMessages();
   }
 

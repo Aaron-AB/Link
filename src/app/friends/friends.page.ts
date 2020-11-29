@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from "@angular/router";
 import { FirebaseService } from "../services/firebase.service";
 import { Toast } from '@capacitor/core';
 import { FriendService } from '../services/Friend.service';
@@ -19,30 +20,49 @@ export class FriendsPage implements OnInit {
   friendid;
   currentUser;
   curr_chatid;
-  constructor(private af:AngularFireAuth,private firebaseService: FirebaseService,private fs: FriendService, private afs: AngularFirestore) {   
-   }
+  constructor(
+    public router: Router,
+    private af:AngularFireAuth,
+    private firebaseService: FirebaseService,
+    private fs: FriendService,
+    private afs: AngularFirestore)
+  {   }
 
  ngOnInit() {
   }
+
+  // function called when chat button is clicked
+  chatWith(event, chatId) {
+    //console.log("Chat Id: ", chatId);
+    if (chatId) {
+      localStorage.setItem("link-chat-id", chatId);
+      localStorage.setItem("link-chat-id", "messages");
+      this.router.navigate(['firechat']);
+    }
+  }
+
 async start(){
  // this.af.authState.subscribe( user => {
    // if (user) { this.userId = user.uid }
  // });
- console.log(this.userId);
+ console.log("userid: ", this.userId);
  //var friendnames = []
  if(!this.clicked){
-  let user = await this.af.currentUser
-  console.log(user);
+  let user = await this.af.currentUser;
+  this.userId = user.uid;
+  console.log("User: ", user);
  
-  await this.firebaseService.get_where("friendships","uid", user.uid).subscribe(res => {
-    var Arr = res;
+  await this.firebaseService.get_where("users","uid", this.userId).subscribe(res => {
+    var userData = res[0].data;
+    console.log("userData: ", userData);
+    console.log("friends: ", userData.friends);
 
-    for(var a of Arr){
-      this.friendnames.push(a.data.name);
+    for(var friend of userData.friends){
+      this.friendnames.push(friend);
     }  
    
   })
-console.log(this.friendnames);
+console.log("friendships:\n", this.friendnames);
 this.clicked=true;}
 }
 
