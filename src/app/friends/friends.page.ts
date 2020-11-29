@@ -46,12 +46,13 @@ async start(){
  // });
  console.log("userid: ", this.userId);
  //var friendnames = []
- if(!this.clicked){
+ //if(!this.clicked){
   let user = await this.af.currentUser;
   this.userId = user.uid;
   console.log("User: ", user);
  
-  await this.firebaseService.get_where("users","uid", this.userId).subscribe(res => {
+  await this.firebaseService.get_where("users","userid", this.userId).subscribe(res => {
+    console.log(res);
     var userData = res[0].data;
     console.log("userData: ", userData);
     console.log("friends: ", userData.friends);
@@ -62,7 +63,7 @@ async start(){
    
   })
 console.log("friendships:\n", this.friendnames);
-this.clicked=true;}
+//this.clicked=true;}
 }
 
 
