@@ -10,3 +10,29 @@ ion-card {
 img {
   height: 250px;
 }
+
+.ionic--buttons {
+  position: absolute;
+  flex: 0 0 100px;
+  text-align: centre;
+  bottom: 20px;
+  left: 30%;
+  right: 0;
+  align-items: centre;
+}
+
+.ionic--buttons button {
+  border-radius: 75%;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  background: #FFFFFF;
+  display: inline-block;
+  padding-top: 10px;
+  margin: 0 12px;
+}
+
+.ionic--buttons button:focus {
+  outline: 0;
+}
