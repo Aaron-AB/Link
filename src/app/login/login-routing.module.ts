@@ -10,7 +10,8 @@ const routes: Routes = [
     path: '',
     component: LoginPage
   },
-  { path: 'swiper', component: SwiperGesturePage},  
+  { path: 'swiper', component: SwiperGesturePage},   
+  {path : 'adduser',component: AdduserComponent}
 ];
 
 @NgModule({
