@@ -48,7 +48,7 @@ export class ChatService{
           }
 
   getUsers() {
-    return this.afs.collection('users').valueChanges({idField: 'uid'}) as Observable<User[]>;
+    return this.afs.collection('Users').valueChanges({idField: 'uid'}) as Observable<User[]>;
   }
 
   setChatId(chatId) {
@@ -92,3 +92,4 @@ export class ChatService{
   }
 
 }
+//users

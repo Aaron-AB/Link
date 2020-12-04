@@ -16,7 +16,7 @@ export class LocationService {
     this.coords = coordinates.coords;
     console.log(this.coords);
     this.fireServ.collectionName = "Users";
-    this.fireServ.update_record(this.userid, {location: coordinates});
+    this.fireServ.update_record(this.uid, {location: coordinates});
   }
 
   degreesToRadians(degrees: number) {

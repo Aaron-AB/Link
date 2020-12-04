@@ -14,7 +14,7 @@ import { firestore } from "firebase/app";
 })
 export class FriendsPage implements OnInit {
   friendnames = [];
-  userId;
+  uid;
   clicked = false;
   newfriends = [];
   friendid;
@@ -43,16 +43,16 @@ export class FriendsPage implements OnInit {
 
   async start(){
     // this.af.authState.subscribe( user => {
-      // if (user) { this.userId = user.uid }
+      // if (user) { this.uid = user.uid }
       // });
-      console.log("userid: ", this.userId);
+      console.log("uid: ", this.uid);
       //var friendnames = []
       //if(!this.clicked){
         let user = await this.af.currentUser;
-        this.userId = user.uid;
+        this.uid = user.uid;
         console.log("User: ", user);
         
-        await this.firebaseService.get_where("users","userid", this.userId).subscribe(res => {
+        await this.firebaseService.get_where("Users","uid", this.uid).subscribe(res => {
           console.log(res);
           var userData = res[0].data;
           console.log("userData: ", userData);
@@ -75,7 +75,7 @@ export class FriendsPage implements OnInit {
         this.friendid = friendemail.value;
         this.curr_chatid = this.createchatid(user.uid, this.friendid);
         this.firebaseService
-        .get_where("Users", "userid", friendemail.value)
+        .get_where("Users", "uid", friendemail.value)
         .subscribe((res) => {
           var Arr = res;
 
@@ -118,7 +118,7 @@ export class FriendsPage implements OnInit {
         return friend;
       }
       set_self(uid, chat, other_uid) {
-        this.firebaseService.get_where("Users", "userid", uid).subscribe((res) => {
+        this.firebaseService.get_where("Users", "uid", uid).subscribe((res) => {
           var Arr = res;
 
           var own = {
