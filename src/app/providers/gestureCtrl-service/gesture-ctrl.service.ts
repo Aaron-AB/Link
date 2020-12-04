@@ -14,7 +14,6 @@ export class GestureCtrlService {
   useSwiperGesture(cardArray) {
     for (let i = 0; i < cardArray.length; i++) {
       const card = cardArray[i];
-      // console.log("card", card);
 
       const gesture = this.gestureCtrl.create({
         el: card.nativeElement,

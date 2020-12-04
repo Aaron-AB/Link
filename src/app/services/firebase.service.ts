@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //import { CropData } from '../services/cart.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +61,16 @@ export class FirebaseService {
       })
     );
 
+  }
+
+  getDoc(collectionName, docID) {
+    this.firestore.collection<any>(collectionName).doc(docID).snapshotChanges().pipe(map(action => {
+      const data = action.payload.data();
+      const id = action.payload.id;
+      console.log(data);
+      return { data };
+    }
+    ));
   }
 
 }

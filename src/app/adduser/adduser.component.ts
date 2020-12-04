@@ -51,7 +51,7 @@ export class AdduserComponent implements OnInit {
   getUser(){    
 
     this.fireService.update_collection("Users",firebase.auth().currentUser.uid,{name: this.name, email: this.email, profilePicture: unwrapSafeValue(this.photo) })
-
+    this.router.navigate(["home"]);
     /*console.log(this.fireService.read_record().subscribe(testUsers => {
       console.log('Observable:',testUsers);  
       this.getimagetest = testUsers[0].profilePicture; 

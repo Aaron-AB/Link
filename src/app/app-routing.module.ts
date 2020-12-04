@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'firechat',
     loadChildren: () => import('./firechat/firechat.module').then( m => m.FirechatPageModule)
   },
+  {
+    path: 'blank',
+    loadChildren: () => import('./blank/blank.module').then( m => m.BlankPageModule)
+  },
 
 ];
 

@@ -58,9 +58,9 @@ export class LoginPage implements OnInit {
       let user = result.user; 
       console.log(user);
       let userObj = {userid: user.uid}
-      //is.fireServ.create_record_id(userObj, 'users', user.uid); //Changed to users from Users
-      this.fireServ.create_record_id(userObj, 'Users', user.uid); 
-      this.router.navigate(['login/swiper']);
+      this.fireServ.create_record_id(userObj, 'Users', user.uid); //Changed to users from Users
+      //this.fireServ.create_record_id(userObj, 'Users', user.uid); 
+      this.router.navigate(['login/adduser']);
       alert("OTP Verified!");
     }).catch(err => {
       alert(err);
