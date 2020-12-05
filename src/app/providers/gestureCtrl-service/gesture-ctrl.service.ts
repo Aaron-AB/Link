@@ -11,6 +11,7 @@ export class GestureCtrlService {
     private platform: Platform
   ) {}
 //ORIGINALLY IMPLEMENTED SWIPER WHEN WE FIRST MOVED AWAY FROM HAMMERJS, DOES NOT WORK ANYMORE
+//HERE FOR DOCUMENTATION PURPOSES
   useSwiperGesture(cardArray) {
     for (let i = 0; i < cardArray.length; i++) {
       const card = cardArray[i];

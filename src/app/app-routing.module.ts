@@ -14,17 +14,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'friends',
     loadChildren: () => import('./friends/friends.module').then( m => m.FriendsPageModule)
   },
   {
     path: 'firechat',
     loadChildren: () => import('./firechat/firechat.module').then( m => m.FirechatPageModule)
-  },
-  {
-    path: 'blank',
-    loadChildren: () => import('./blank/blank.module').then( m => m.BlankPageModule)
   },
 
 ];

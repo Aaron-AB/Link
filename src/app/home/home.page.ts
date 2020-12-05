@@ -22,10 +22,9 @@ export class HomePage implements OnInit{
   
   constructor(
     private fire: FirebaseService, 
-    private location: LocationService,
     private match: MatchesService,
     private router: Router) {
-    location.locate();
+    //location.locate();
   }
 
   //Generates all potential matches
@@ -37,9 +36,13 @@ export class HomePage implements OnInit{
   }
 
   //Navigates to the friend page when you click recommend
-  addMatch(product) {
-    this.match.addMatch(product);
+  addMatch(val) {
+    this.storeID(val);
     this.router.navigate(['friends']);
+  }
+
+  storeID(local) {
+    localStorage.setItem("match", local);
   }
 
 }
