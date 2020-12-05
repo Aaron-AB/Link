@@ -1,0 +1,564 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Link documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Link documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>GestureCtrlService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/providers/gestureCtrl-service/gesture-ctrl.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#decimalToHex">decimalToHex</a>
+                            </li>
+                            <li>
+                                <a href="#setCardColor">setCardColor</a>
+                            </li>
+                            <li>
+                                <a href="#useSwiperGesture">useSwiperGesture</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(gestureCtrl: GestureController, zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>, platform: Platform)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/providers/gestureCtrl-service/gesture-ctrl.service.ts:7</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>gestureCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>GestureController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>zone</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platform</td>
+                                                  
+                                                        <td>
+                                                                    <code>Platform</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="decimalToHex"></a>
+                    <span class="name">
+                        <b>
+                            decimalToHex
+                        </b>
+                        <a href="#decimalToHex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>decimalToHex(d, padding)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/providers/gestureCtrl-service/gesture-ctrl.service.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>d</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>padding</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setCardColor"></a>
+                    <span class="name">
+                        <b>
+                            setCardColor
+                        </b>
+                        <a href="#setCardColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setCardColor(x, element)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/providers/gestureCtrl-service/gesture-ctrl.service.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>x</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>element</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useSwiperGesture"></a>
+                    <span class="name">
+                        <b>
+                            useSwiperGesture
+                        </b>
+                        <a href="#useSwiperGesture"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>useSwiperGesture(cardArray)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/app/providers/gestureCtrl-service/gesture-ctrl.service.ts:14</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cardArray</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NgZone } from &quot;@angular/core&quot;;
+import { GestureController, Platform } from &quot;@ionic/angular&quot;;
+
+@Injectable({
+  providedIn: &quot;root&quot;,
+})
+export class GestureCtrlService {
+  constructor(
+    private gestureCtrl: GestureController,
+    private zone: NgZone,
+    private platform: Platform
+  ) {}
+//ORIGINALLY IMPLEMENTED SWIPER WHEN WE FIRST MOVED AWAY FROM HAMMERJS, DOES NOT WORK ANYMORE
+  useSwiperGesture(cardArray) {
+    for (let i &#x3D; 0; i &lt; cardArray.length; i++) {
+      const card &#x3D; cardArray[i];
+
+      const gesture &#x3D; this.gestureCtrl.create({
+        el: card.nativeElement,
+        threshold: 15,
+        gestureName: &quot;swipte&quot;,
+        onStart: (ev) &#x3D;&gt; {},
+        onMove: (ev) &#x3D;&gt; {
+          // console.log(&quot;ev : &quot;, ev);
+          card.nativeElement.style.transform &#x3D; &#x60;translateX(${
+            ev.deltaX
+          }px) rotate(${ev.deltaX / 10}deg)&#x60;;
+
+          //TO SET COLOR ON SWIPE
+          // this.setCardColor(ev.deltaX, card.nativeElement);
+        },
+        onEnd: (ev) &#x3D;&gt; {
+          card.nativeElement.style.transition &#x3D; &quot;.5s ease-out&quot;;
+
+          //Right side Move
+          if (ev.deltaX &gt; 150) {
+            card.nativeElement.style.transform &#x3D; &#x60;translateX(${
+              +this.platform.width() * 2
+            }px) rotate(${ev.deltaX / 2}deg)&#x60;;
+          }
+          // Left Side Move
+          else if (ev.deltaX &lt; -150) {
+            card.nativeElement.style.transform &#x3D; &#x60;translateX(-${
+              +this.platform.width() * 2
+            }px) rotate(${ev.deltaX / 2}deg)&#x60;;
+          }
+          // When No move or if small move back to original
+          else {
+            card.nativeElement.style.transform &#x3D; &quot;&quot;;
+          }
+        },
+      });
+      gesture.enable(true);
+    }
+  }
+
+  // STYLE OF CARD WHEN GESTURE START
+  setCardColor(x, element) {
+    let color &#x3D; &quot;&quot;;
+    const abs &#x3D; Math.abs(x);
+    const min &#x3D; Math.trunc(Math.min(16 * 16 - abs, 16 * 16));
+    const hexCode &#x3D; this.decimalToHex(min, 2);
+
+    if (x &lt; 0) {
+      color &#x3D; &quot;#FF&quot; + hexCode + &quot;FF&quot; + hexCode;
+    } else {
+      color &#x3D; &quot;#&quot; + hexCode + &quot;FF&quot; + hexCode;
+    }
+    element.style.background &#x3D; color;
+  }
+
+  decimalToHex(d, padding) {
+    let hex &#x3D; Number(d).toString(16);
+    padding &#x3D;
+      typeof padding &#x3D;&#x3D;&#x3D; &quot;undefined&quot; || padding &#x3D;&#x3D;&#x3D; null
+        ? (padding &#x3D; 2)
+        : padding;
+
+    while (hex.length &lt; padding) {
+      hex &#x3D; &quot;0&quot; + hex;
+    }
+    return hex;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+/**
+ *
+ * USE THIS IN ANY TS FILE
+ */
+/* @ViewChildren(IonCard, { read: ElementRef }) cards: QueryList&lt;ElementRef&gt;;
+
+  constructor(private gestureCtrlService: GestureCtrlService) {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    const cardArray &#x3D; this.cards.toArray();
+    this.gestureCtrlService.useTinderSwipe(cardArray);
+  } */
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'GestureCtrlService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

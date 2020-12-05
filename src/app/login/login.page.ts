@@ -26,12 +26,14 @@ export class LoginPage implements OnInit {
     public fireServ: FirebaseService
   ) { }
 
+  //Oninite firebase's recaptcher is started and waits for a new registration
   ngOnInit() {
     //firebase.initializeApp(environment.firebase);
     this.recaptchaVerifier = new firebase.auth.
       RecaptchaVerifier('recaptcha-container', { 'size': 'invisible'});
   }
 
+  //sends a one time pad code to the firebase backend
   sendOTP() {
     var areaCode ="+1868";
     var pNumber = (<HTMLInputElement>document.getElementById("phoneNumber")).value;
@@ -50,6 +52,7 @@ export class LoginPage implements OnInit {
 
   }
 
+  //Verifies that the one time pad is correct
   verifyOTP() {
     var otp = (<HTMLInputElement>document.getElementById("otp")).value;
     document.title = "Verify your number";

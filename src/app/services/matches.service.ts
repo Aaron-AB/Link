@@ -11,20 +11,6 @@ export class MatchesService {
   match;
 
   constructor(private firebaseService: FirebaseService) {
-    // this.firebaseService.read_record("Users").subscribe(data => {
-
-    //   this.posts = data.map(e => {
-
-    //     return {
-    //       //id: e.payload.doc.id,
-    //       Name: e.payload.doc.data()['name'],
-    //       Email: e.payload.doc.data()['email'],
-    //       ProfilePicture: e.payload.doc.data()['profilePicture'],
-    //     };
-
-    //   })
-    //   //console.log(this.posts);
-    //  });
 
     this.posts = this.firebaseService.read_record("Users").pipe(
       map((actions) => {

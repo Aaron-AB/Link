@@ -10,7 +10,7 @@ export class GestureCtrlService {
     private zone: NgZone,
     private platform: Platform
   ) {}
-
+//ORIGINALLY IMPLEMENTED SWIPER WHEN WE FIRST MOVED AWAY FROM HAMMERJS, DOES NOT WORK ANYMORE
   useSwiperGesture(cardArray) {
     for (let i = 0; i < cardArray.length; i++) {
       const card = cardArray[i];

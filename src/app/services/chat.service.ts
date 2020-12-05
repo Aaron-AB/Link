@@ -34,6 +34,7 @@ export class ChatService{
   users = [];
   messages: Observable<Message[]>;
 
+  //Constructor fetches the auth state
   constructor(private firebaseService: FirebaseService,
               private af: AngularFireAuth,
               private afs: AngularFirestore) { 
@@ -47,15 +48,18 @@ export class ChatService{
             })
           }
 
+  //Grabs all the possible users in the database
   getUsers() {
     return this.afs.collection('Users').valueChanges({idField: 'uid'}) as Observable<User[]>;
   }
 
+  //Sets a common chatId
   setChatId(chatId) {
     this.commonId = chatId;
    console.log("chat id: ", this.commonId);
   }
 
+  //Sends a message to the database
   addChatMessage(msg) {
     return this.afs.collection(this.commonId).add({ //replace "messages" with whatever chatid there is
       msg: msg,
@@ -64,6 +68,7 @@ export class ChatService{
     });
   }
 
+  //Gets the uid that is receving your message
   getUserForMsg(msgFromId, users: User[]): string {
     for (let usr of users){
       if (usr.uid == msgFromId) {
@@ -73,6 +78,7 @@ export class ChatService{
     return 'Deleted';
   }
 
+  //Gets the chat messages from the shared collection based on chatID
   getChatMessages() {
     let users = [];
     return this.getUsers().pipe(

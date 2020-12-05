@@ -13,6 +13,8 @@ export class FriendService {
   private posts = new Observable<any[]>();
   currentUser: User = null;
   uid;
+
+  //Grabs the auth state of the current user
   constructor(private af: AngularFireAuth, 
     private firebaseService: FirebaseService,
     private firestore: AngularFirestore) {

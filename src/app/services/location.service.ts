@@ -9,8 +9,9 @@ const { Geolocation } = Plugins;
 })
 export class LocationService {
   coords: any;
-  constructor(public userid: string, public fireServ: FirebaseService) { }
+  constructor(public uid: string, public fireServ: FirebaseService) { }
 
+  //calls the Geolocation plugin and gets the current coordinates
   async locate() {
     const coordinates = await Geolocation.getCurrentPosition({'maximumAge': 10, 'enableHighAccuracy': true});
     this.coords = coordinates.coords;
@@ -23,6 +24,7 @@ export class LocationService {
     return degrees * Math.PI / 180;
   }
 
+  //Converts the geolocation to meters from the user
   distanceToCoordinateInMetres(targetCoords: GeolocationPosition): number {
     let earthRadiusMetres = 6371000;
     let deltaLat = this.degreesToRadians(targetCoords.coords.latitude - this.coords.latitude);
@@ -34,6 +36,7 @@ export class LocationService {
     return 2 * earthRadiusMetres * Math.atan2(Math.sqrt(temp), Math.sqrt(1-temp));
   }
 
+  //checks if the distance compared is less than the variable metres
   withinRange(targetCoords: GeolocationPosition, metres: number): boolean {
     return this.distanceToCoordinateInMetres(targetCoords) <= metres;
   }

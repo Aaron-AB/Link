@@ -20,168 +20,138 @@ export class FriendsPage implements OnInit {
   friendid;
   currentUser;
   curr_chatid;
-  friends = [] //aaron function
+  friends = []; //aaron function
   constructor(
     public router: Router,
     private af: AngularFireAuth,
     private firebaseService: FirebaseService,
     private fs: FriendService,
     private afs: AngularFirestore
-    ) {}
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // function called when chat button is clicked
   chatWith(event, chatId) {
     //console.log("Chat Id: ", chatId);
     if (chatId) {
       localStorage.setItem("link-chat-id", chatId);
-      this.router.navigate(['firechat']);
+      this.router.navigate(["firechat"]);
     }
   }
 
-  async start(){
+  async start() {
     // this.af.authState.subscribe( user => {
-      // if (user) { this.uid = user.uid }
-      // });
-      console.log("uid: ", this.uid);
-      //var friendnames = []
-      //if(!this.clicked){
-        let user = await this.af.currentUser;
-        this.uid = user.uid;
-        console.log("User: ", user);
-        
-        await this.firebaseService.get_where("Users","uid", this.uid).subscribe(res => {
-          console.log(res);
-          var userData = res[0].data;
-          console.log("userData: ", userData);
-          console.log("friends: ", userData.friends);
+    // if (user) { this.uid = user.uid }
+    // });
+    console.log("uid: ", this.uid);
+    //var friendnames = []
+    //if(!this.clicked){
+    let user = await this.af.currentUser;
+    this.uid = user.uid;
+    console.log("User: ", user);
 
-          for(var friend of userData.friends){
-            this.friendnames.push(friend);
-          }  
-          
-        })
-        console.log("friendships:\n", this.friendnames);
-        //this.clicked=true;}
-      }
+    await this.firebaseService
+      .get_where("Users", "uid", this.uid)
+      .subscribe((res) => {
+        console.log(res);
+        var userData = res[0].data;
+        console.log("userData: ", userData);
+        console.log("friends: ", userData.friends);
 
-
-
-      //function called when add friend clicked
-      async addfriend(friendemail) {
-        let user = await this.af.currentUser;
-        this.friendid = friendemail.value;
-        this.curr_chatid = this.createchatid(user.uid, this.friendid);
-        this.firebaseService
-        .get_where("Users", "uid", friendemail.value)
-        .subscribe((res) => {
-          var Arr = res;
-
-          this.check_if_exist(Arr);
-
-          var friend = this.createfriend(Arr, this.curr_chatid);
-          //      this.set_self(user.uid,chatid,this.friendid);
-
-          //logs for debuging
-          console.log("obj friend: ", friend);
-
-          this.updatefile(friend, user.uid);
-        });
-
-        console.log("chattid e: ", this.curr_chatid);
-        //the input value cleared
-        this.set_self(user.uid, this.curr_chatid, this.friendid);
-        friendemail.value = "";
-      }
-
-      check_if_exist(Arr) {
-        if (Arr.length == 0) {
-          alert("friend not found");
+        for (var friend of userData.friends) {
+          this.friendnames.push(friend);
         }
-      }
+      });
+    console.log("friendships:\n", this.friendnames);
+    //this.clicked=true;}
+  }
 
-      createchatid(uid, other_uid) {
-        console.log("create: ", other_uid);
-        var num = Math.floor(Math.random() * 999 + 1);
-        var chatid = uid + other_uid + num;
-        return chatid;
-      }
-      createfriend(Arr, chat) {
-        console.log("Arr: ", Arr);
-        var friend = {
-          name: Arr[0].data.name,
-          uid: Arr[0].data.uid,
-          chatid: chat,
-        };
-        return friend;
-      }
-      set_self(uid, chat, other_uid) {
-        this.firebaseService.get_where("Users", "uid", uid).subscribe((res) => {
-          var Arr = res;
+  //function called when add friend clicked
+  async addfriend(friendemail) {
+    let user = await this.af.currentUser;
+    this.friendid = friendemail.value;
+    this.curr_chatid = this.createchatid(user.uid, this.friendid);
+    this.firebaseService
+      .get_where("Users", "uid", friendemail.value)
+      .subscribe((res) => {
+        var Arr = res;
 
-          var own = {
-            name: Arr[0].data.name,
-            uid: uid,
-            chat: chat,
-          };
-          this.add_to_others_list(other_uid, own);
-        });
-      }
-      add_to_others_list(other_uid, own) {
-        console.log("to own: ", own);
-        this.firebaseService.update_collection("Users", other_uid, {
-          friends: firestore.FieldValue.arrayUnion(own),
-        });
-        alert("friend added");
-        return "finished";
-      }
+        this.check_if_exist(Arr);
 
-      updatefile(newfriend, uid) {
-        console.log(newfriend);
+        var friend = this.createfriend(Arr, this.curr_chatid);
+        //      this.set_self(user.uid,chatid,this.friendid);
 
-        this.firebaseService.update_collection("Users", uid, {
-          friends: firestore.FieldValue.arrayUnion(newfriend),
-        });
-        alert("friend added");
-        return "finished";
-      }
+        //logs for debuging
+        console.log("obj friend: ", friend);
 
-  /*
-  //testing functions
-  async tester(){
-  let user = await this.af.currentUser
-  var obj = {
-   email:"Marc.hypolite@gmail.com",
-   name:"Marc Hypolite",
-   profilePicture:"NULL",
-   uid: user.uid
-  };
- this.firebaseService.create_record(obj,"Users");
- alert("done")
-}
+        this.updatefile(friend, user.uid);
+      });
 
-getarray(uid){
-  var friends;
-  var id;
-  this.firebaseService.get_where("Users","uid",uid).subscribe(res => {
-    var Arr = res;
-    var obj = Arr[0].data;
-    id = Arr[0].id
-    if(!obj.friends){
-    this.firebaseService.update_collection("Users",Arr[0].id,{friends:[]});
+    console.log("chattid e: ", this.curr_chatid);
+    //the input value cleared
+    this.set_self(user.uid, this.curr_chatid, this.friendid);
+    friendemail.value = "";
+  }
+
+  //Checks if the friend is found
+  check_if_exist(Arr) {
+    if (Arr.length == 0) {
+      alert("friend not found");
     }
-      friends = obj.friends;
-  })
+  }
 
-  return {id:id,friends:friends}
-}
+  //Generates a chat id unique to your friend and you
+  createchatid(uid, other_uid) {
+    console.log("create: ", other_uid);
+    var num = Math.floor(Math.random() * 999 + 1);
+    var chatid = uid + other_uid + num;
+    return chatid;
+  }
 
-get_recordID(uid){
-  this.firebaseService.get_where("Users","uid",uid).subscribe(res => {
-    var Arr = res;
-    return Arr[0].id
-  })
-}*/
+  //Creates a friend object for friend
+  createfriend(Arr, chat) {
+    console.log("Arr: ", Arr);
+    var friend = {
+      name: Arr[0].data.name,
+      uid: Arr[0].data.uid,
+      chatid: chat,
+    };
+    return friend;
+  }
+
+  //creates a friend object for yourself
+  set_self(uid, chat, other_uid) {
+    this.firebaseService.get_where("Users", "uid", uid).subscribe((res) => {
+      var Arr = res;
+
+      var own = {
+        name: Arr[0].data.name,
+        uid: uid,
+        chat: chat,
+      };
+      this.add_to_others_list(other_uid, own);
+    });
+  }
+
+  //Updates the friend that you added friend's list
+  add_to_others_list(other_uid, own) {
+    console.log("to own: ", own);
+    this.firebaseService.update_collection("Users", other_uid, {
+      friends: firestore.FieldValue.arrayUnion(own),
+    });
+    alert("friend added");
+    return "finished";
+  }
+
+  //Updates the friend array with a new friend 
+  updatefile(newfriend, uid) {
+    console.log(newfriend);
+
+    this.firebaseService.update_collection("Users", uid, {
+      friends: firestore.FieldValue.arrayUnion(newfriend),
+    });
+    alert("friend added");
+    return "finished";
+  }
 }

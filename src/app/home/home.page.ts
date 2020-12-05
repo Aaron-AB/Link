@@ -28,6 +28,7 @@ export class HomePage implements OnInit{
     location.locate();
   }
 
+  //Generates all potential matches
   ngOnInit() {
     this.match.getProductsArr().subscribe(res => {
       this.matchArr = res;
@@ -35,6 +36,7 @@ export class HomePage implements OnInit{
     })
   }
 
+  //Navigates to the friend page when you click recommend
   addMatch(product) {
     this.match.addMatch(product);
     this.router.navigate(['friends']);

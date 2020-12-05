@@ -52,19 +52,10 @@ export class AdduserComponent implements OnInit {
 
     this.fireService.update_collection("Users",firebase.auth().currentUser.uid,{name: this.name, email: this.email, profilePicture: unwrapSafeValue(this.photo) })
     this.router.navigate(["home"]);
-    /*console.log(this.fireService.read_record().subscribe(testUsers => {
-      console.log('Observable:',testUsers);  
-      this.getimagetest = testUsers[0].profilePicture; 
-      console.log(this.getimagetest); 
-      this.initPP.nativeElement.style.image = " {{getimagetest}}";
-
-      //var testUsers = testUsers;  
-      //console.log(testUsers.values()); 
-    }
-      ) );  */
-      //this.router.navigate(["login/interests"]);
   }//getUser()
 
+
+  //Allows user to take a camera picture using the capacitor plugin
   async getPicture(type: string) { 
     
     if (!Capacitor.isPluginAvailable('Camera') || (this.isDesktop && type === 'gallery')) {
@@ -83,6 +74,7 @@ export class AdduserComponent implements OnInit {
     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
   }//end getPicture
 
+  //Triggers event when file is chosen
   onFileChoose(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
     const pattern = /image-*/;
@@ -102,6 +94,8 @@ export class AdduserComponent implements OnInit {
 
     }//end onFileChoose  
 
+
+    //Code to select image from your local storage
     async selectImage() {
       const actionSheet = await this.actionSheetController.create({
         header: "Select Image source",
